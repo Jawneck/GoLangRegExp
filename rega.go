@@ -82,10 +82,27 @@ func poregtonfa(pofix string) *nfa{
 	return nfaStack[0]
 }
 
-func pomatch(po string,s string) bool{
+func pomatch(po string, s string) bool{
 	ismatch := false
 	ponfa := poregtonfa(po)
 	
+	//Keeping track of the current states of the NFA.
+	current := []*state{}
+	//Any state that you can get to from current.
+	next := []*state{}
+
+	//Loops through s a character at a time.
+	for _, r := range s{
+		//Loops through current array.
+		for _, c := range current{
+			if c.symbol == r{
+				
+			}
+		}
+		//Swapping current and next arrays, after getting what all current states are.
+		current, next = next, []*state{}
+	}
+
 	return ismatch
 }
 

@@ -16,25 +16,31 @@ func intopost(infix string) string{
 	for _, r := range infix{
 		switch{
 		case r == '(':
-			s = append(s, r)//Appends '(' onto the end of the stack	
+			s = append(s, r)//Appends '(' onto the end of the stack	.
 		case r == ')':
-			//While the last character on the stack doesn't equal an open bracket
+			//While the last character on the stack doesn't equal an open bracket.
 			for s[len(s)-1] != '('{
-				pofix = append(pofix, s[len(s)-1])//Appends the last element of s onto pofix
-				s = s[:len(s)-1]//s = everything in s except for the last character
+				pofix = append(pofix, s[len(s)-1])//Appends the top element of s onto pofix.
+				s = s[:len(s)-1]//s = everything in s except for the last character.
 			}
 			s = s[:len(s)-1]
 		case specials[r] > 0:
 			//While the stack still has elements on it AND the precedence of the current character that you're reading is
-			//less than the precendence of the top element of the stack
+			//less than the precendence of the top element of the stack.
 			for len(s) > 0 && specials[r] <= specials[s[len(s)-1]]{
 				pofix = append(pofix, s[len(s)-1])
 				s = s[:len(s)-1]
 			}
 			s = append(s, r)
 		default:
-			pofix = append(pofix, r)//Appends character r onto the end of the pofix array	
+			pofix = append(pofix, r)//Appends character r onto the end of the pofix array.
 		}
+	}
+
+	//If there is any element left on top of the stack , append it to the output.
+	for len(s) > 0{
+		pofix = append(pofix, s[len(s)-1])
+		s = s[:len(s)-1]
 	}
 
 	return string(pofix)

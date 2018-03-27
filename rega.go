@@ -91,16 +91,27 @@ func pomatch(po string, s string) bool{
 	//Any state that you can get to from current.
 	next := []*state{}
 
+
+
 	//Loops through s a character at a time.
 	for _, r := range s{
 		//Loops through current array.
 		for _, c := range current{
 			if c.symbol == r{
-				
+
 			}
 		}
 		//Swapping current and next arrays, after getting what all current states are.
 		current, next = next, []*state{}
+	}
+
+	//Loops through the current array containing the states that we end up in.
+	for _, c := range current{
+		//if the state in the current array is equal to the accept state of ponfa.
+		if c == ponfa.accept{
+			ismatch = true
+			break
+		}
 	}
 
 	return ismatch

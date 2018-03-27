@@ -76,10 +76,19 @@ func poregtonfa(pofix string) *nfa{
 		}
 	}
 
+	if len(nfaStack) != 1{
+		fmt.Println("Uh oh:", len(nfaStack), nfaStack)
+	}
 	return nfaStack[0]
 }
 
+func pomatch(po string,s string) bool{
+	ismatch := false
+	ponfa := poregtonfa(po)
+	
+	return ismatch
+}
+
 func main(){
-	nfa := poregtonfa("ab.c*|")
-	fmt.Println(nfa)
+	nfa := poregtonfa(pomatch("ab.c*|" , "cccc"))
 }

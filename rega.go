@@ -87,13 +87,15 @@ func poregtonfa(pofix string) *nfa{
 func addState(l []*state, s *state, a *state) []*state{
 	l = append(l, s)//Append state that is passed in
 
-	//Any state that has its symbol as 0
-	if s.symbol == 0{
+	//Any state that has its symbol as 0, means it has edge arrows coming from it.
+	if s != a && s.symbol == 0{
 		l = addState(l, s.edge1, a)
 		if s.edge2 != nil{
 			l = addState(l, s.edge2, a)
 		}
 	}
+
+	return l
 }
 
 			//Does string po match string s.
@@ -114,7 +116,7 @@ func pomatch(po string, s string) bool{
 		//Loops through current array.
 		for _, c := range current{
 			if c.symbol == r{
-				next = addStates(next[:], s.edge1, ponfa.accept)
+				next = addState(next[:], c.edge1, ponfa.accept)
 			}
 		}
 		//Swapping current and next arrays after getting what all current states are, and setting next to an empty array.
@@ -134,5 +136,5 @@ func pomatch(po string, s string) bool{
 }
 
 func main(){
-	nfa := poregtonfa(pomatch("ab.c*|" , "cccc"))
+	fmt.Println(pomatch("ab.c*|" , "ccccccccccccc"))
 }

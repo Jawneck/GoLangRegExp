@@ -82,8 +82,24 @@ func poregtonfa(pofix string) *nfa{
 	return nfaStack[0]
 }
 
+//Function which takes a list of pointers to states, takes a single state, and the accept state.
+//Returns a list of pointers to states.
+func addState(l []*state, s *state, a *state) []*state{
+	l = append(l, s)//Append state that is passed in
+
+	//Any state that has its symbol as 0
+	if s.symbol == 0{
+		l = addState(l, s.edge1, a)
+		if s.edge2 != nil{
+			l = addState(l, s.edge2, a)
+		}
+	}
+}
+
+			//Does string po match string s.
 func pomatch(po string, s string) bool{
-	ismatch := false
+	ismatch := false//Default position false.
+	//Creating a NFA from the regular expression.
 	ponfa := poregtonfa(po)
 	
 	//Keeping track of the current states of the NFA.
@@ -91,17 +107,17 @@ func pomatch(po string, s string) bool{
 	//Any state that you can get to from current.
 	next := []*state{}
 
-
+	current = addState(current[:], ponfa.initial, ponfa.accept)
 
 	//Loops through s a character at a time.
 	for _, r := range s{
 		//Loops through current array.
 		for _, c := range current{
 			if c.symbol == r{
-
+				next = addStates(next[:], s.edge1, ponfa.accept)
 			}
 		}
-		//Swapping current and next arrays, after getting what all current states are.
+		//Swapping current and next arrays after getting what all current states are, and setting next to an empty array.
 		current, next = next, []*state{}
 	}
 

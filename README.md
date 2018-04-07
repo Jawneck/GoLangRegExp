@@ -18,13 +18,13 @@ and 1 ∗ means any number of 1’s.
 3. go run rega.go
 
 ### References
-GMIT. Quality assurance framework.
-https://www.gmit.ie/general/quality- assurance- framework.
+GMIT. Quality assurance framework<br/>
+https://www.gmit.ie/general/quality-assurance-framework.
 
-Google. The go programming language.
+Google<br/> The go programming language.
 https://golang.org/.
 
-Video Streams
+Video Streams<br/>
 https://web.microsoftstream.com/video/d08f6a02-23ec-4fa1-a781-585f1fd8c69e https://web.microsoftstream.com/video/9d83a3f3-bc4f-4bda-95cc-b21c8e67675e https://web.microsoftstream.com/video/946a7826-e536-4295-b050-857975162e6c https://web.microsoftstream.com/video/68a288f5-4688-4b3a-980e-1fcd5dd2a53b https://web.microsoftstream.com/video/bad665ee-3417-4350-9d31-6db35cf5f80d
 
 

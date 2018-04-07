@@ -136,5 +136,7 @@ func pomatch(po string, s string) bool{
 }
 
 func main(){
+	//Matching the string ab or the string containing any number of c's.
 	fmt.Println(pomatch("ab.c*|" , "cccc"))
+	fmt.Println(pomatch("ab.c*|" , "ab"))
 }

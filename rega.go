@@ -26,7 +26,7 @@ func poregtonfa(pofix string) *nfa{
 		switch r{
 		case '.'://POPS two elements off the NFA stack.
 			frag2 := nfaStack[len(nfaStack)-1]//The last element on the stack.
-			nfaStack := nfaStack[:len(nfaStack)-1]//Every element in stack up to but not including the last element.
+			nfaStack = nfaStack[:len(nfaStack)-1]//Every element in stack up to but not including the last element.
 			frag1 := nfaStack[len(nfaStack)-1]
 			nfaStack = nfaStack[:len(nfaStack)-1]
 
@@ -39,7 +39,7 @@ func poregtonfa(pofix string) *nfa{
 
 		case '|'://POPS two elements off the NFA stack.
 			frag2 := nfaStack[len(nfaStack)-1]
-			nfaStack := nfaStack[:len(nfaStack)-1]
+			nfaStack = nfaStack[:len(nfaStack)-1]
 			frag1 := nfaStack[len(nfaStack)-1]
 			nfaStack = nfaStack[:len(nfaStack)-1]
 
@@ -136,5 +136,5 @@ func pomatch(po string, s string) bool{
 }
 
 func main(){
-	fmt.Println(pomatch("ab.c*|" , "ccccccccccccc"))
+	fmt.Println(pomatch("ab.c*|" , "cccc"))
 }
